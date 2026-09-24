@@ -9,3 +9,15 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/*
+|--------------------------------------------------------------------------
+| LiveSales - Estilos globales
+|--------------------------------------------------------------------------
+*/
+
+body {
+    background-color: #f8f9fa;
+}
