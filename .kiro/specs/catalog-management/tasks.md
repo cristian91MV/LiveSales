@@ -1,11 +1,11 @@
 # Implementation Plan
-- [ ] 1. Crear estructura de dominio del catálogo
-  - [ ] 1.1 Crear enum ProductStatus
+- [x] 1. Crear estructura de dominio del catálogo
+  - [x] 1.1 Crear enum ProductStatus
     - Valores DISPONIBLE, RESERVADO, VENDIDO e INACTIVO.
-  - [ ] 1.2 Crear enum ProductCondition
+  - [x] 1.2 Crear enum ProductCondition
     - Valores NUEVO_SIN_USO, COMO_NUEVO, BUEN_ESTADO y CON_DETALLES.
-  - [ ] 1.3 Crear migración y modelo Category.
-  - [ ] 1.4 Crear migración y modelo Product.
+  - [x] 1.3 Crear migración y modelo Category.
+  - [x] 1.4 Crear migración y modelo Product.
     - category_id.
     - code único.
     - name.
@@ -16,217 +16,217 @@
     - detail_description nullable.
     - status.
     - timestamps.
-  - [ ] 1.5 Crear migración y modelo ProductPhoto.
+  - [x] 1.5 Crear migración y modelo ProductPhoto.
     - product_id.
     - path.
     - is_primary.
     - timestamps.
-  - [ ] 1.6 Configurar relaciones Eloquent.
-  - [ ] 1.7 Configurar casts del Product.
-  - [ ] 1.8 Ejecutar migraciones sin destruir la base de datos existente.
+  - [x] 1.6 Configurar relaciones Eloquent.
+  - [x] 1.7 Configurar casts del Product.
+  - [x] 1.8 Ejecutar migraciones sin destruir la base de datos existente.
 
-- [ ] 2. Crear factories del catálogo
-  - [ ] 2.1 Crear CategoryFactory.
-  - [ ] 2.2 Crear ProductFactory.
-  - [ ] 2.3 Crear ProductPhotoFactory si es necesario para pruebas.
-  - [ ] 2.4 Asegurar que ProductFactory cree productos DISPONIBLE por defecto.
+- [x] 2. Crear factories del catálogo
+  - [x] 2.1 Crear CategoryFactory.
+  - [x] 2.2 Crear ProductFactory.
+  - [x] 2.3 Crear ProductPhotoFactory si es necesario para pruebas.
+  - [x] 2.4 Asegurar que ProductFactory cree productos DISPONIBLE por defecto.
 
-- [ ] 3. Implementar gestión de categorías
-  - [ ] 3.1 Crear StoreCategoryRequest.
-  - [ ] 3.2 Crear UpdateCategoryRequest.
-  - [ ] 3.3 Validar nombre obligatorio y único.
-  - [ ] 3.4 Crear CategoryController.
-  - [ ] 3.5 Implementar index.
-  - [ ] 3.6 Implementar create y store.
-  - [ ] 3.7 Implementar edit y update.
-  - [ ] 3.8 Implementar eliminación únicamente cuando no existan productos relacionados.
-  - [ ] 3.9 Crear rutas protegidas por role:Administrador.
+- [x] 3. Implementar gestión de categorías
+  - [x] 3.1 Crear StoreCategoryRequest.
+  - [x] 3.2 Crear UpdateCategoryRequest.
+  - [x] 3.3 Validar nombre obligatorio y único.
+  - [x] 3.4 Crear CategoryController.
+  - [x] 3.5 Implementar index.
+  - [x] 3.6 Implementar create y store.
+  - [x] 3.7 Implementar edit y update.
+  - [x] 3.8 Implementar eliminación únicamente cuando no existan productos relacionados.
+  - [x] 3.9 Crear rutas protegidas por role:Administrador.
 
-- [ ] 4. Crear vistas de categorías
-  - [ ] 4.1 Crear categories/index.blade.php.
-  - [ ] 4.2 Crear categories/create.blade.php.
-  - [ ] 4.3 Crear categories/edit.blade.php.
-  - [ ] 4.4 Mostrar mensajes de éxito y errores de validación.
-  - [ ] 4.5 Mostrar cantidad de productos relacionados.
-  - [ ] 4.6 Agregar enlace Categorías al layout únicamente para Administrador.
+- [x] 4. Crear vistas de categorías
+  - [x] 4.1 Crear categories/index.blade.php.
+  - [x] 4.2 Crear categories/create.blade.php.
+  - [x] 4.3 Crear categories/edit.blade.php.
+  - [x] 4.4 Mostrar mensajes de éxito y errores de validación.
+  - [x] 4.5 Mostrar cantidad de productos relacionados.
+  - [x] 4.6 Agregar enlace Categorías al layout únicamente para Administrador.
 
-- [ ] 5. Implementar validación de productos
-  - [ ] 5.1 Crear StoreProductRequest.
-  - [ ] 5.2 Crear UpdateProductRequest.
-  - [ ] 5.3 Validar category_id existente.
-  - [ ] 5.4 Validar código obligatorio y único.
-  - [ ] 5.5 Validar nombre obligatorio.
-  - [ ] 5.6 Validar base_price >= 0 y máximo dos decimales.
-  - [ ] 5.7 Validar ProductCondition.
-  - [ ] 5.8 Exigir detail_description cuando condition sea CON_DETALLES.
-  - [ ] 5.9 Permitir únicamente DISPONIBLE o INACTIVO desde formularios administrativos.
-  - [ ] 5.10 Exigir al menos una fotografía en creación.
-  - [ ] 5.11 Validar jpg, jpeg, png y webp.
-  - [ ] 5.12 Limitar cada imagen a 4 MB.
+- [x] 5. Implementar validación de productos
+  - [x] 5.1 Crear StoreProductRequest.
+  - [x] 5.2 Crear UpdateProductRequest.
+  - [x] 5.3 Validar category_id existente.
+  - [x] 5.4 Validar código obligatorio y único.
+  - [x] 5.5 Validar nombre obligatorio.
+  - [x] 5.6 Validar base_price >= 0 y máximo dos decimales.
+  - [x] 5.7 Validar ProductCondition.
+  - [x] 5.8 Exigir detail_description cuando condition sea CON_DETALLES.
+  - [x] 5.9 Permitir únicamente DISPONIBLE o INACTIVO desde formularios administrativos.
+  - [x] 5.10 Exigir al menos una fotografía en creación.
+  - [x] 5.11 Validar jpg, jpeg, png y webp.
+  - [x] 5.12 Limitar cada imagen a 4 MB.
 
-- [ ] 6. Implementar creación de productos
-  - [ ] 6.1 Crear CreateProductAction.
-  - [ ] 6.2 Crear ProductController.
-  - [ ] 6.3 Implementar create.
-  - [ ] 6.4 Implementar store mediante CreateProductAction.
-  - [ ] 6.5 Crear Product.
-  - [ ] 6.6 Guardar fotografías en el disco public.
-  - [ ] 6.7 Crear registros ProductPhoto.
-  - [ ] 6.8 Marcar la primera fotografía como principal.
-  - [ ] 6.9 Utilizar transacción para operaciones de base de datos.
-  - [ ] 6.10 Limpiar archivos creados si falla la operación.
-  - [ ] 6.11 Verificar o crear public/storage mediante storage:link cuando corresponda.
+- [x] 6. Implementar creación de productos
+  - [x] 6.1 Crear CreateProductAction.
+  - [x] 6.2 Crear ProductController.
+  - [x] 6.3 Implementar create.
+  - [x] 6.4 Implementar store mediante CreateProductAction.
+  - [x] 6.5 Crear Product.
+  - [x] 6.6 Guardar fotografías en el disco public.
+  - [x] 6.7 Crear registros ProductPhoto.
+  - [x] 6.8 Marcar la primera fotografía como principal.
+  - [x] 6.9 Utilizar transacción para operaciones de base de datos.
+  - [x] 6.10 Limpiar archivos creados si falla la operación.
+  - [x] 6.11 Verificar o crear public/storage mediante storage:link cuando corresponda.
 
-- [ ] 7. Implementar consulta del catálogo
-  - [ ] 7.1 Implementar ProductController@index.
-  - [ ] 7.2 Implementar búsqueda por code.
-  - [ ] 7.3 Implementar búsqueda por name.
-  - [ ] 7.4 Implementar filtro por category.
-  - [ ] 7.5 Implementar filtro por status.
-  - [ ] 7.6 Permitir combinar filtros.
-  - [ ] 7.7 Paginar a 25 registros.
-  - [ ] 7.8 Mantener query string durante paginación.
-  - [ ] 7.9 Implementar ProductController@show.
-  - [ ] 7.10 Permitir index y show para Administrador y Vendedor.
+- [x] 7. Implementar consulta del catálogo
+  - [x] 7.1 Implementar ProductController@index.
+  - [x] 7.2 Implementar búsqueda por code.
+  - [x] 7.3 Implementar búsqueda por name.
+  - [x] 7.4 Implementar filtro por category.
+  - [x] 7.5 Implementar filtro por status.
+  - [x] 7.6 Permitir combinar filtros.
+  - [x] 7.7 Paginar a 25 registros.
+  - [x] 7.8 Mantener query string durante paginación.
+  - [x] 7.9 Implementar ProductController@show.
+  - [x] 7.10 Permitir index y show para Administrador y Vendedor.
 
-- [ ] 8. Crear vistas del catálogo
-  - [ ] 8.1 Crear products/index.blade.php.
-  - [ ] 8.2 Mostrar fotografía principal.
-  - [ ] 8.3 Mostrar código, nombre, categoría, talla y precio base.
-  - [ ] 8.4 Mostrar condición y estado mediante badges.
-  - [ ] 8.5 Crear formulario de búsqueda y filtros.
-  - [ ] 8.6 Crear products/show.blade.php.
-  - [ ] 8.7 Mostrar galería completa.
-  - [ ] 8.8 Crear products/create.blade.php.
-  - [ ] 8.9 Permitir carga múltiple de fotografías.
-  - [ ] 8.10 Agregar enlace Productos al layout para Administrador y Vendedor.
+- [x] 8. Crear vistas del catálogo
+  - [x] 8.1 Crear products/index.blade.php.
+  - [x] 8.2 Mostrar fotografía principal.
+  - [x] 8.3 Mostrar código, nombre, categoría, talla y precio base.
+  - [x] 8.4 Mostrar condición y estado mediante badges.
+  - [x] 8.5 Crear formulario de búsqueda y filtros.
+  - [x] 8.6 Crear products/show.blade.php.
+  - [x] 8.7 Mostrar galería completa.
+  - [x] 8.8 Crear products/create.blade.php.
+  - [x] 8.9 Permitir carga múltiple de fotografías.
+  - [x] 8.10 Agregar enlace Productos al layout para Administrador y Vendedor.
 
-- [ ] 9. Implementar edición de productos
-  - [ ] 9.1 Crear UpdateProductAction.
-  - [ ] 9.2 Implementar ProductController@edit.
-  - [ ] 9.3 Implementar ProductController@update.
-  - [ ] 9.4 Mantener el mismo Product.id.
-  - [ ] 9.5 Mantener created_at.
-  - [ ] 9.6 Permitir agregar nuevas fotografías.
-  - [ ] 9.7 No eliminar automáticamente fotografías existentes.
-  - [ ] 9.8 Crear products/edit.blade.php.
-  - [ ] 9.9 Permitir edición únicamente a Administrador.
+- [x] 9. Implementar edición de productos
+  - [x] 9.1 Crear UpdateProductAction.
+  - [x] 9.2 Implementar ProductController@edit.
+  - [x] 9.3 Implementar ProductController@update.
+  - [x] 9.4 Mantener el mismo Product.id.
+  - [x] 9.5 Mantener created_at.
+  - [x] 9.6 Permitir agregar nuevas fotografías.
+  - [x] 9.7 No eliminar automáticamente fotografías existentes.
+  - [x] 9.8 Crear products/edit.blade.php.
+  - [x] 9.9 Permitir edición únicamente a Administrador.
 
-- [ ] 10. Implementar gestión de fotografías
-  - [ ] 10.1 Crear ProductPhotoController.
-  - [ ] 10.2 Crear DeleteProductPhotoAction.
-  - [ ] 10.3 Impedir eliminar la última fotografía.
-  - [ ] 10.4 Eliminar archivo físico al eliminar fotografía.
-  - [ ] 10.5 Si se elimina la principal, seleccionar otra como principal.
-  - [ ] 10.6 Crear SetPrimaryProductPhotoAction.
-  - [ ] 10.7 Garantizar una sola fotografía principal.
-  - [ ] 10.8 Validar pertenencia ProductPhoto → Product.
-  - [ ] 10.9 Crear rutas administrativas de fotografías.
-  - [ ] 10.10 Agregar controles de fotografías en products/edit.
+- [x] 10. Implementar gestión de fotografías
+  - [x] 10.1 Crear ProductPhotoController.
+  - [x] 10.2 Crear DeleteProductPhotoAction.
+  - [x] 10.3 Impedir eliminar la última fotografía.
+  - [x] 10.4 Eliminar archivo físico al eliminar fotografía.
+  - [x] 10.5 Si se elimina la principal, seleccionar otra como principal.
+  - [x] 10.6 Crear SetPrimaryProductPhotoAction.
+  - [x] 10.7 Garantizar una sola fotografía principal.
+  - [x] 10.8 Validar pertenencia ProductPhoto → Product.
+  - [x] 10.9 Crear rutas administrativas de fotografías.
+  - [x] 10.10 Agregar controles de fotografías en products/edit.
 
-- [ ] 11. Implementar retiro de productos
-  - [ ] 11.1 No crear ruta destroy para Product.
-  - [ ] 11.2 Implementar ProductController@deactivate.
-  - [ ] 11.3 Cambiar DISPONIBLE → INACTIVO desde la gestión administrativa.
-  - [ ] 11.4 Evitar utilizar eliminación física como operación ordinaria.
-  - [ ] 11.5 Mantener productos VENDIDO e INACTIVO consultables.
+- [x] 11. Implementar retiro de productos
+  - [x] 11.1 No crear ruta destroy para Product.
+  - [x] 11.2 Implementar ProductController@deactivate.
+  - [x] 11.3 Cambiar DISPONIBLE → INACTIVO desde la gestión administrativa.
+  - [x] 11.4 Evitar utilizar eliminación física como operación ordinaria.
+  - [x] 11.5 Mantener productos VENDIDO e INACTIVO consultables.
 
-- [ ] 12. Configurar rutas y autorización
-  - [ ] 12.1 Crear rutas products.index y products.show dentro de auth + active.
-  - [ ] 12.2 Crear rutas administrativas de productos dentro de role:Administrador.
-  - [ ] 12.3 Crear rutas de categorías dentro de role:Administrador.
-  - [ ] 12.4 Crear rutas administrativas de fotografías.
-  - [ ] 12.5 Verificar Route Model Binding.
-  - [ ] 12.6 Verificar que Vendedor reciba 403 en operaciones administrativas.
-  - [ ] 12.7 Verificar que invitados sean redirigidos al login.
-  - [ ] 12.8 Verificar middleware active.
+- [x] 12. Configurar rutas y autorización
+  - [x] 12.1 Crear rutas products.index y products.show dentro de auth + active.
+  - [x] 12.2 Crear rutas administrativas de productos dentro de role:Administrador.
+  - [x] 12.3 Crear rutas de categorías dentro de role:Administrador.
+  - [x] 12.4 Crear rutas administrativas de fotografías.
+  - [x] 12.5 Verificar Route Model Binding.
+  - [x] 12.6 Verificar que Vendedor reciba 403 en operaciones administrativas.
+  - [x] 12.7 Verificar que invitados sean redirigidos al login.
+  - [x] 12.8 Verificar middleware active.
 
-- [ ] 13. Checkpoint manual de categorías
-  - [ ] 13.1 Crear categoría desde la interfaz.
-  - [ ] 13.2 Editar categoría.
-  - [ ] 13.3 Intentar crear nombre duplicado.
-  - [ ] 13.4 Eliminar categoría sin productos.
-  - [ ] 13.5 Verificar que categoría con productos no pueda eliminarse.
-  - [ ] 13.6 Verificar que Vendedor no pueda administrar categorías.
+- [x] 13. Checkpoint manual de categorías
+  - [x] 13.1 Crear categoría desde la interfaz.
+  - [x] 13.2 Editar categoría.
+  - [x] 13.3 Intentar crear nombre duplicado.
+  - [x] 13.4 Eliminar categoría sin productos.
+  - [x] 13.5 Verificar que categoría con productos no pueda eliminarse.
+  - [x] 13.6 Verificar que Vendedor no pueda administrar categorías.
 
-- [ ] 14. Checkpoint manual de productos
-  - [ ] 14.1 Crear producto con una fotografía.
-  - [ ] 14.2 Crear producto con varias fotografías.
-  - [ ] 14.3 Verificar fotografía principal.
-  - [ ] 14.4 Consultar producto como Administrador.
-  - [ ] 14.5 Consultar producto como Vendedor.
-  - [ ] 14.6 Buscar producto por código.
-  - [ ] 14.7 Buscar producto por nombre.
-  - [ ] 14.8 Filtrar por categoría.
-  - [ ] 14.9 Filtrar por estado.
-  - [ ] 14.10 Editar información del producto.
-  - [ ] 14.11 Agregar fotografías desde edición.
-  - [ ] 14.12 Cambiar fotografía principal.
-  - [ ] 14.13 Eliminar fotografía secundaria.
-  - [ ] 14.14 Intentar eliminar la última fotografía.
-  - [ ] 14.15 Desactivar producto.
+- [x] 14. Checkpoint manual de productos
+  - [x] 14.1 Crear producto con una fotografía.
+  - [x] 14.2 Crear producto con varias fotografías.
+  - [x] 14.3 Verificar fotografía principal.
+  - [x] 14.4 Consultar producto como Administrador.
+  - [x] 14.5 Consultar producto como Vendedor.
+  - [x] 14.6 Buscar producto por código.
+  - [x] 14.7 Buscar producto por nombre.
+  - [x] 14.8 Filtrar por categoría.
+  - [x] 14.9 Filtrar por estado.
+  - [x] 14.10 Editar información del producto.
+  - [x] 14.11 Agregar fotografías desde edición.
+  - [x] 14.12 Cambiar fotografía principal.
+  - [x] 14.13 Eliminar fotografía secundaria.
+  - [x] 14.14 Intentar eliminar la última fotografía.
+  - [x] 14.15 Desactivar producto.
 
-- [ ] 15. Crear Feature Tests de categorías
-  - [ ] 15.1 Crear CategoryManagementTest.
-  - [ ] 15.2 Probar creación válida.
-  - [ ] 15.3 Probar nombre obligatorio.
-  - [ ] 15.4 Probar nombre único.
-  - [ ] 15.5 Probar actualización.
-  - [ ] 15.6 Probar eliminación sin productos.
-  - [ ] 15.7 Probar rechazo de eliminación con productos.
-  - [ ] 15.8 Probar acceso de Vendedor.
-  - [ ] 15.9 Probar acceso de invitado.
+- [x] 15. Crear Feature Tests de categorías
+  - [x] 15.1 Crear CategoryManagementTest.
+  - [x] 15.2 Probar creación válida.
+  - [x] 15.3 Probar nombre obligatorio.
+  - [x] 15.4 Probar nombre único.
+  - [x] 15.5 Probar actualización.
+  - [x] 15.6 Probar eliminación sin productos.
+  - [x] 15.7 Probar rechazo de eliminación con productos.
+  - [x] 15.8 Probar acceso de Vendedor.
+  - [x] 15.9 Probar acceso de invitado.
 
-- [ ] 16. Crear Feature Tests de productos
-  - [ ] 16.1 Crear ProductManagementTest.
-  - [ ] 16.2 Probar creación correcta.
-  - [ ] 16.3 Probar código único.
-  - [ ] 16.4 Probar categoría existente.
-  - [ ] 16.5 Probar precio no negativo.
-  - [ ] 16.6 Probar condition válido.
-  - [ ] 16.7 Probar CON_DETALLES.
-  - [ ] 16.8 Probar fotografía obligatoria.
-  - [ ] 16.9 Probar formatos de imagen.
-  - [ ] 16.10 Probar edición.
-  - [ ] 16.11 Probar que created_at no cambie.
-  - [ ] 16.12 Probar que Vendedor no pueda crear.
-  - [ ] 16.13 Probar que Vendedor no pueda editar.
-  - [ ] 16.14 Probar que Vendedor pueda consultar.
+- [x] 16. Crear Feature Tests de productos
+  - [x] 16.1 Crear ProductManagementTest.
+  - [x] 16.2 Probar creación correcta.
+  - [x] 16.3 Probar código único.
+  - [x] 16.4 Probar categoría existente.
+  - [x] 16.5 Probar precio no negativo.
+  - [x] 16.6 Probar condition válido.
+  - [x] 16.7 Probar CON_DETALLES.
+  - [x] 16.8 Probar fotografía obligatoria.
+  - [x] 16.9 Probar formatos de imagen.
+  - [x] 16.10 Probar edición.
+  - [x] 16.11 Probar que created_at no cambie.
+  - [x] 16.12 Probar que Vendedor no pueda crear.
+  - [x] 16.13 Probar que Vendedor no pueda editar.
+  - [x] 16.14 Probar que Vendedor pueda consultar.
 
-- [ ] 17. Crear Feature Tests de fotografías
-  - [ ] 17.1 Crear ProductPhotoTest.
-  - [ ] 17.2 Utilizar Storage::fake('public').
-  - [ ] 17.3 Probar varias fotografías.
-  - [ ] 17.4 Probar fotografía principal automática.
-  - [ ] 17.5 Probar cambio de fotografía principal.
-  - [ ] 17.6 Probar que solo exista una principal.
-  - [ ] 17.7 Probar eliminación de fotografía.
-  - [ ] 17.8 Probar eliminación del archivo físico.
-  - [ ] 17.9 Probar rechazo al eliminar última fotografía.
-  - [ ] 17.10 Probar pertenencia de fotografía al producto.
+- [x] 17. Crear Feature Tests de fotografías
+  - [x] 17.1 Crear ProductPhotoTest.
+  - [x] 17.2 Utilizar Storage::fake('public').
+  - [x] 17.3 Probar varias fotografías.
+  - [x] 17.4 Probar fotografía principal automática.
+  - [x] 17.5 Probar cambio de fotografía principal.
+  - [x] 17.6 Probar que solo exista una principal.
+  - [x] 17.7 Probar eliminación de fotografía.
+  - [x] 17.8 Probar eliminación del archivo físico.
+  - [x] 17.9 Probar rechazo al eliminar última fotografía.
+  - [x] 17.10 Probar pertenencia de fotografía al producto.
 
-- [ ] 18. Crear Feature Tests de búsqueda y filtros
-  - [ ] 18.1 Crear ProductSearchTest.
-  - [ ] 18.2 Probar búsqueda por código.
-  - [ ] 18.3 Probar búsqueda por nombre.
-  - [ ] 18.4 Probar filtro por categoría.
-  - [ ] 18.5 Probar filtro por estado.
-  - [ ] 18.6 Probar combinación de filtros.
-  - [ ] 18.7 Probar paginación de 25 productos.
+- [x] 18. Crear Feature Tests de búsqueda y filtros
+  - [x] 18.1 Crear ProductSearchTest.
+  - [x] 18.2 Probar búsqueda por código.
+  - [x] 18.3 Probar búsqueda por nombre.
+  - [x] 18.4 Probar filtro por categoría.
+  - [x] 18.5 Probar filtro por estado.
+  - [x] 18.6 Probar combinación de filtros.
+  - [x] 18.7 Probar paginación de 25 productos.
 
-- [ ] 19. Ejecutar validación final
-  - [ ] 19.1 Ejecutar php artisan test.
-  - [ ] 19.2 Corregir cualquier test fallido.
-  - [ ] 19.3 Ejecutar php artisan route:list.
-  - [ ] 19.4 Ejecutar php artisan migrate:status.
-  - [ ] 19.5 Ejecutar npm run build.
-  - [ ] 19.6 Verificar manualmente login y navegación.
-  - [ ] 19.7 Verificar que el catálogo no haya roto Authentication.
+- [x] 19. Ejecutar validación final
+  - [x] 19.1 Ejecutar php artisan test.
+  - [x] 19.2 Corregir cualquier test fallido.
+  - [x] 19.3 Ejecutar php artisan route:list.
+  - [x] 19.4 Ejecutar php artisan migrate:status.
+  - [x] 19.5 Ejecutar npm run build.
+  - [x] 19.6 Verificar manualmente login y navegación.
+  - [x] 19.7 Verificar que el catálogo no haya roto Authentication.
 
-- [ ] 20. Final checkpoint
-  - [ ] 20.1 Confirmar que toda la suite PHPUnit está en verde.
-  - [ ] 20.2 Confirmar que el build frontend finaliza correctamente.
-  - [ ] 20.3 Confirmar que no existen archivos temporales o credenciales versionadas.
-  - [ ] 20.4 Ejecutar git diff --check.
-  - [ ] 20.5 Revisar git status.
-  - [ ] 20.6 Marcar todas las tareas completadas únicamente después de verificarlas.
+- [x] 20. Final checkpoint
+  - [x] 20.1 Confirmar que toda la suite PHPUnit está en verde.
+  - [x] 20.2 Confirmar que el build frontend finaliza correctamente.
+  - [x] 20.3 Confirmar que no existen archivos temporales o credenciales versionadas.
+  - [x] 20.4 Ejecutar git diff --check.
+  - [x] 20.5 Revisar git status.
+  - [x] 20.6 Marcar todas las tareas completadas únicamente después de verificarlas.
