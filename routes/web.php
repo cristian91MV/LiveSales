@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductPhotoController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,72 +60,72 @@ Route::middleware(['auth', 'active'])->group(function () {
     })->name('dashboard');
 
 
-   /*
+    /*
 |--------------------------------------------------------------------------
 | Productos - Administrador y Vendedor
 |--------------------------------------------------------------------------
 */
 
-Route::get('/products', [ProductController::class, 'index'])
-    ->name('products.index');
+    Route::get('/products', [ProductController::class, 'index'])
+        ->name('products.index');
 
 
-/*
+    /*
 |--------------------------------------------------------------------------
 | Productos - solo Administrador
 |--------------------------------------------------------------------------
 */
 
-Route::middleware('role:Administrador')->group(function () {
+    Route::middleware('role:Administrador')->group(function () {
 
-    Route::get('/products/create', [ProductController::class, 'create'])
-        ->name('products.create');
+        Route::get('/products/create', [ProductController::class, 'create'])
+            ->name('products.create');
 
-    Route::post('/products', [ProductController::class, 'store'])
-        ->name('products.store');
+        Route::post('/products', [ProductController::class, 'store'])
+            ->name('products.store');
 
-    Route::get('/products/{product}/edit', [ProductController::class, 'edit'])
-        ->whereNumber('product')
-        ->name('products.edit');
+        Route::get('/products/{product}/edit', [ProductController::class, 'edit'])
+            ->whereNumber('product')
+            ->name('products.edit');
 
-    Route::put('/products/{product}', [ProductController::class, 'update'])
-        ->whereNumber('product')
-        ->name('products.update');
+        Route::put('/products/{product}', [ProductController::class, 'update'])
+            ->whereNumber('product')
+            ->name('products.update');
 
-    Route::patch(
-        '/products/{product}/deactivate',
-        [ProductController::class, 'deactivate']
-    )
-        ->whereNumber('product')
-        ->name('products.deactivate');
+        Route::patch(
+            '/products/{product}/deactivate',
+            [ProductController::class, 'deactivate']
+        )
+            ->whereNumber('product')
+            ->name('products.deactivate');
 
-    Route::delete(
-        '/products/{product}/photos/{photo}',
-        [ProductPhotoController::class, 'destroy']
-    )
-        ->whereNumber('product')
-        ->whereNumber('photo')
-        ->name('products.photos.destroy');
+        Route::delete(
+            '/products/{product}/photos/{photo}',
+            [ProductPhotoController::class, 'destroy']
+        )
+            ->whereNumber('product')
+            ->whereNumber('photo')
+            ->name('products.photos.destroy');
 
-    Route::patch(
-        '/products/{product}/photos/{photo}/primary',
-        [ProductPhotoController::class, 'setPrimary']
-    )
-        ->whereNumber('product')
-        ->whereNumber('photo')
-        ->name('products.photos.primary');
-});
+        Route::patch(
+            '/products/{product}/photos/{photo}/primary',
+            [ProductPhotoController::class, 'setPrimary']
+        )
+            ->whereNumber('product')
+            ->whereNumber('photo')
+            ->name('products.photos.primary');
+    });
 
 
-/*
+    /*
 |--------------------------------------------------------------------------
 | Detalle de producto - Administrador y Vendedor
 |--------------------------------------------------------------------------
 */
 
-Route::get('/products/{product}', [ProductController::class, 'show'])
-    ->whereNumber('product')
-    ->name('products.show');
+    Route::get('/products/{product}', [ProductController::class, 'show'])
+        ->whereNumber('product')
+        ->name('products.show');
 
     /*
     |--------------------------------------------------------------------------
@@ -188,5 +189,50 @@ Route::get('/products/{product}', [ProductController::class, 'show'])
 
             Route::delete('/{category}', [CategoryController::class, 'destroy'])
                 ->name('destroy');
+        });
+    /*
+|--------------------------------------------------------------------------
+| Gestión de clientes - Administrador y Vendedor
+|--------------------------------------------------------------------------
+*/
+    Route::prefix('customers')
+        ->name('customers.')
+        ->group(function () {
+
+            Route::get(
+                '/',
+                [CustomerController::class, 'index']
+            )->name('index');
+
+            Route::get(
+                '/create',
+                [CustomerController::class, 'create']
+            )->name('create');
+
+            Route::post(
+                '/',
+                [CustomerController::class, 'store']
+            )->name('store');
+
+            Route::get(
+                '/{customer}/edit',
+                [CustomerController::class, 'edit']
+            )
+                ->whereNumber('customer')
+                ->name('edit');
+
+            Route::put(
+                '/{customer}',
+                [CustomerController::class, 'update']
+            )
+                ->whereNumber('customer')
+                ->name('update');
+
+            Route::get(
+                '/{customer}',
+                [CustomerController::class, 'show']
+            )
+                ->whereNumber('customer')
+                ->name('show');
         });
 });
