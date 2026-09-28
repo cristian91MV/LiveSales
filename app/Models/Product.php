@@ -51,4 +51,10 @@ class Product extends Model
         return $this->hasOne(ProductPhoto::class)
             ->where('is_primary', true);
     }
+    public function liveProducts(): HasMany
+    {
+        return $this->hasMany(
+            LiveProduct::class
+        );
+    }
 }

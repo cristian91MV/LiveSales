@@ -35,6 +35,9 @@
                     Clientes
                 </a>
 
+                 <a class="text-decoration-none text-light" href="{{ route('lives.index') }}">
+                    Lives
+                </a>
                 @role('Administrador')
                     <a class="text-decoration-none text-light" href="{{ route('users.index') }}">
                         Usuarios

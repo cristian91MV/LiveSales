@@ -7,6 +7,8 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductPhotoController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\LiveProductController;
+use App\Http\Controllers\LiveSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -235,4 +237,133 @@ Route::middleware(['auth', 'active'])->group(function () {
                 ->whereNumber('customer')
                 ->name('show');
         });
+    /*
+|--------------------------------------------------------------------------
+| Live Management
+|--------------------------------------------------------------------------
+*/
+
+    Route::get(
+        '/lives',
+        [LiveSessionController::class, 'index']
+    )->name('lives.index');
+
+    Route::get(
+        '/lives/create',
+        [LiveSessionController::class, 'create']
+    )->name('lives.create');
+
+    Route::post(
+        '/lives',
+        [LiveSessionController::class, 'store']
+    )->name('lives.store');
+
+    Route::get(
+        '/lives/{liveSession}/edit',
+        [LiveSessionController::class, 'edit']
+    )
+        ->whereNumber('liveSession')
+        ->name('lives.edit');
+
+    Route::put(
+        '/lives/{liveSession}',
+        [LiveSessionController::class, 'update']
+    )
+        ->whereNumber('liveSession')
+        ->name('lives.update');
+
+    Route::patch(
+        '/lives/{liveSession}/start',
+        [LiveSessionController::class, 'start']
+    )
+        ->whereNumber('liveSession')
+        ->name('lives.start');
+
+    Route::patch(
+        '/lives/{liveSession}/finish',
+        [LiveSessionController::class, 'finish']
+    )
+        ->whereNumber('liveSession')
+        ->name('lives.finish');
+
+    Route::patch(
+        '/lives/{liveSession}/cancel',
+        [LiveSessionController::class, 'cancel']
+    )
+        ->whereNumber('liveSession')
+        ->name('lives.cancel');
+
+    Route::get(
+        '/lives/{liveSession}',
+        [LiveSessionController::class, 'show']
+    )
+        ->whereNumber('liveSession')
+        ->name('lives.show');
+
+
+    /*
+|--------------------------------------------------------------------------
+| Productos dentro de un Live
+|--------------------------------------------------------------------------
+*/
+
+    Route::post(
+        '/lives/{liveSession}/products',
+        [LiveProductController::class, 'store']
+    )
+        ->whereNumber('liveSession')
+        ->name('lives.products.store');
+
+    Route::put(
+        '/lives/{liveSession}/products/{liveProduct}',
+        [LiveProductController::class, 'update']
+    )
+        ->whereNumber('liveSession')
+        ->whereNumber('liveProduct')
+        ->name('lives.products.update');
+
+    Route::delete(
+        '/lives/{liveSession}/products/{liveProduct}',
+        [LiveProductController::class, 'destroy']
+    )
+        ->whereNumber('liveSession')
+        ->whereNumber('liveProduct')
+        ->name('lives.products.destroy');
+    /*
+|--------------------------------------------------------------------------
+| Productos de una sesión Live
+|--------------------------------------------------------------------------
+*/
+
+    Route::post(
+        '/lives/{liveSession}/products',
+        [
+            LiveProductController::class,
+            'store',
+        ]
+    )
+        ->whereNumber('liveSession')
+        ->name('lives.products.store');
+
+    Route::put(
+        '/lives/{liveSession}/products/{liveProduct}',
+        [
+            LiveProductController::class,
+            'update',
+        ]
+    )
+        ->whereNumber('liveSession')
+        ->whereNumber('liveProduct')
+        ->name('lives.products.update');
+
+    Route::delete(
+        '/lives/{liveSession}/products/{liveProduct}',
+        [
+            LiveProductController::class,
+            'destroy',
+        ]
+    )
+        ->whereNumber('liveSession')
+        ->whereNumber('liveProduct')
+        ->name('lives.products.destroy');
 });
