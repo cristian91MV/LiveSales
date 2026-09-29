@@ -6,7 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>@yield('title', 'LiveSales')</title>
+    @php
+        $flashMessages = [
+            'success' => session('success'),
+            'error' => session('error'),
+            'warning' => session('warning'),
+        ];
+    @endphp
 
+    <script>
+        window.flashMessages = @json($flashMessages);
+    </script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -35,7 +45,8 @@
                     Clientes
                 </a>
 
-                 <a class="text-decoration-none text-light" href="{{ route('lives.index') }}">
+                <a class="text-decoration-none text-light" href="{{ route('lives.index') }}">
+                    <i class="bi bi-broadcast me-1"></i>
                     Lives
                 </a>
                 @role('Administrador')
@@ -81,27 +92,7 @@
 
     <main>
         <div class="container py-4">
-
-            @if (session('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('success') }}
-
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
-                </div>
-            @endif
-
-
-            @if (session('error'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    {{ session('error') }}
-
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
-                </div>
-            @endif
-
-
             @yield('content')
-
         </div>
     </main>
 

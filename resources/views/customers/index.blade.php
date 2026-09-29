@@ -8,7 +8,7 @@
 
         <div>
             <h1 class="h3 mb-1">
-                Clientes Prueba
+                Clientes
             </h1>
 
             <p class="text-muted mb-0">
